@@ -10,14 +10,17 @@ public class TimerManager : MonoBehaviour
     public TextMeshProUGUI  timerText;
     void Start()
     {
-        transform.position = WallpaperManager.instance.wallpaperSize / 2;
+        timerText.alignment = TextAlignmentOptions.Center;
+        timerText.color = Color.black;
+        timerText.fontSize = 70;
+        transform.position = new Vector2(0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
-        timerText.text = "Time: " + time.ToString("F2");
+        timerText.text = "Time: " + time.ToString("F2") + "\n" + "Gen: " + GameManager.instance.generation;
         if (time >= reset) time = 0;
     }
 }
